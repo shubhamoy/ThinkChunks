@@ -7,8 +7,8 @@ Visualize problem-solving which is relevant in the age of Generative AI wherein 
 
 ## Food for Thought
 
-✅ Why shall we do the hard things first?
-✅ Approaches matter
-✅ Approximation plays a vital role
-✅ Effort v/s Impact
-✅ Simplification is the key!
+- ✅ Why shall we do the hard things first?
+- ✅ Approaches matter
+- ✅ Approximation plays a vital role
+- ✅ Effort v/s Impact
+- ✅ Simplification is the key!
