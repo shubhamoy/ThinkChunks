@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+:root{
+--clr‑primary:#2196f3;
+--clr‑accent:#4caf50;
+--radius‑sm:4px;
+--sp‑md:1rem;
+}
+body { font-family: 'Poppins', sans-serif; background: #f5f7fa; margin: 0; padding: 0; }
+/* Initial centered layout */
+body:not(.loaded) .grid-container {display: flex !important; flex-direction: column; align-items: center; justify-content: flex-start; padding: 2rem 1rem; gap: 1rem; min-height: 100vh;}
+/* Hide extras until calculate */
+body:not(.loaded) .result,
+body:not(.loaded) .indicator,
+body:not(.loaded) .matrix,
+body:not(.loaded) .controls {display: none;}
+/* Full grid layout when loaded */
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "inputs result"
+    "indicator indicator"
+    "matrix matrix";
+  grid-template-columns: 2fr 1fr; gap: 1rem; max-width: 960px; margin: 2rem auto; padding: 0 1rem; transition: all 0.5s ease;}
+header { grid-area: header; text-align: center; }
+.logo{
+  width: clamp(240px, 40vw, 320px); 
+  height: auto;     /* keep the aspect ratio */
+}
+.inputs { grid-area: inputs; background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); transition: padding 0.3s ease; }
+.initial { display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top:1rem; }
+.initial input { width: 140px; height: 3rem; font-size: 1.5rem; text-align: center; border: 1px solid #ccc; border-radius: 4px; }
+.initial .multiply { font-size: 2rem; }
+.error {text-align: center; color: #f17474; margin-top:1rem;margin-bottom:-1rem; display: none;}
+.btn-calc { width: 100%; margin-top: 2.5rem; padding: 0.8rem; background: #4caf50; color: #fff; border: none; border-radius: 4px; font-weight: 600; cursor: pointer; }
+.btn-calc:hover { background: #43a047; }
+.btn-calc:disabled { background: #aedab0b1; }
+body.loaded .btn-calc { display: none; }
+.controls { grid-area: inputs; display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem; }
+.btn-next { width: 100%; padding: 1.2rem; background: #2196f3; color: #fff; border: none; border-radius: 4px; font-weight: 600; cursor: pointer; margin-top:1rem}
+.btn-next:hover { background: #1e88e5; }
+.btn-next:disabled{background-color: #2196f6a1;}
+.sub-controls { display: flex; gap: 0.5rem; margin-top: 1.5rem; }
+.sub-controls .btn { flex: 1; padding: 0.6rem; border-radius: 4px; font-weight: 600; cursor: pointer; text-align: center; }
+.btn-prev { background: #ff9800; color: #fff; border: none; }
+.btn-prev:hover { background: #fb8c00; }
+.btn-change { background: #673ab7; color: #fff; border: none; }
+.btn-change:hover { background: #5e35b1; }
+.order-indicator { align-self: center; font-size: 0.9rem; padding: 0 0.5rem; }
+.btn-reset { background: #fff; color: #000; border: 1px solid #000; }
+.btn-reset:hover { background: #f44336; color: #fff; }
+.result { grid-area: result; background: #e3f2fd; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+.result p { margin: 0.5rem 0; }
+.result strong { width: 120px; }
+.progress-container { margin-top: 1rem; background: #ddd; border-radius: 4px; overflow: hidden; position:relative;}
+.progress-bar { width: 0%; height: 1.75rem; background: none; transition: width 0.5s ease, background-image 0.5s ease; }
+.indicator { grid-area: indicator; background: #fff3e0; padding: 1rem; border-radius: 8px; text-align: center; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+.indicator #stepIndicator { font-weight: 600; }
+.indicator #story { margin-top: 0.5rem; font-style: italic; }
+.matrix { grid-area: matrix; background: #fff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); overflow-x: auto; }
+.matrix table { width: 100%; border-collapse: collapse; margin-top: 1rem; table-layout: fixed; }
+.matrix th, .matrix td { border: 1px solid #ddd; padding: 0.6rem; text-align: center; word-wrap: break-word; }
+.matrix th { font-weight: 600; }
+.matrix th:first-child { background: #f0f0f0; width: 15%; }
+.matrix th:first-child:not(:only-child) {text-align: right;}
+.product.small { background: #e0f7fa; }
+.product.medium { background: #fff59d; }
+.product.large { background: #ffe082; }
+.product.hidden { visibility: hidden; }
+.product.visible { visibility: visible; animation: pop 0.4s ease-out; }
+@keyframes pop { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  /* Tablets and small laptops */
+@media (max-width: 800px) {
+  .grid-container {
+    grid-template-areas:
+      "header"
+      "inputs"
+      "result"
+      "indicator"
+      "matrix";
+    grid-template-columns: 1fr;
+    max-width: 90%;         /* give it some breathing room */
+  }
+  header h1{font-size: 2rem}
+  header h2{font-size: 1.5rem}
+  .inputs {padding: 1rem;}
+  .btn-calc{margin-bottom: 1rem;}
+  .initial {margin-top: 0;}
+  .controls {margin-top: 0;}
+  section h2 {margin:0}
+  .sub-controls {margin-top: 0.5rem;}
+  .btn-next {padding: 0.5rem;}
+  .result {padding: 0.5rem;text-align: center;}
+}
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 3rem;         /* down from 4.5rem */
+  }
+  header h2 {
+    font-size: 1.4rem;       /* down from 1.9rem */
+  }
+
+  .initial {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .initial input {
+    width: 100%;             /* fill the container */
+    max-width: none;         /* remove the fixed 140px */
+  }
+
+  .btn-calc,
+  .btn-next {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  .sub-controls {
+    flex-direction: column;
+  }
+  .sub-controls .btn {
+    width: 100%;
+  }
+}
