@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ThinkChunks: Incremental Problem Solving">
+  <title>ThinkChunks - Incremental Problem Solving</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link 
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer"
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Spicy+Rice">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600">
+</head>
+<body>
+    <noscript>
+        <p class="noscript-warning">
+            Please enable JavaScript to use ThinkChunks’ interactive features.
+        </p>
+    </noscript>
+  <div class="grid-container" id="grid">
+    <header><img src="logo2.svg" alt="ThinkChunks - Incremental Problem Solving" class="logo"></header>
+    <section class="inputs" id="inputs">
+      <div class="initial">
+        <input type="number" id="numA" value="234" min="0" step="1">
+        <span class="multiply">×</span>
+        <input type="number" id="numB" value="567" min="0" step="1">
+      </div>
+      <div id="inputError" class="error" aria-live="polite"></div>
+      <button id="btnCalc" class="btn-calc"><i class="fa fa-calculator fa-lg"></i> Calculate</button>
+      <div class="controls">
+        <button id="btnNext" class="btn-next" disabled>Next</button>
+        <div class="sub-controls">
+          <button id="btnPrev" class="btn btn-prev" disabled><i class="fa fa-arrow-left fa-lg"></i></button>
+          <button id="btnChangeOrder" class="btn btn-change">Reverse Order</button>
+          <span class="order-indicator" id="orderIndicator">Largest → Smallest</span>
+          <button id="btnReset" class="btn btn-reset" disabled>Reset</button>
+        </div>
+      </div>
+    </section>
+    <section class="result">
+      <h2>Results</h2>
+      <p><strong>True Product:</strong> <span id="trueProduct">–</span></p>
+      <p><strong>Approx Product:</strong> <span id="approxSum">0</span></p>
+      <p><strong>Accuracy:</strong> <span id="accuracy">0%</span></p>
+      <p><strong>Error:</strong> <span id="error">0%</span></p>
+      <div class="progress-container">
+        <div id="progressBar" class="progress-bar"></div>
+    </div>
+    </section>
+    <div class="indicator">
+      <div id="stepIndicator">Step 0 of 0</div>
+      <div id="story">Let's get started!</div>
+    </div>
+    <section class="matrix">
+      <h2>Multiplication Matrix</h2>
+      <table id="matrixTable">
+        <thead id="matrixHead"></thead>
+        <tbody id="matrixBody"></tbody>
+      </table>
+    </section>
+  </div>
+  <script type="text/javascript" src="app.js"></script>
+</body>
+</html>
